@@ -311,5 +311,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView(apiKey: .constant("tcg_test_123"))
+    SettingsView(apiKey: .constant(""))
 }

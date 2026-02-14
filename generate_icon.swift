@@ -68,6 +68,6 @@ if let tiffData = image.tiffRepresentation,
     let bitmapImage = NSBitmapImageRep(data: tiffData),
     let pngData = bitmapImage.representation(using: .png, properties: [:])
 {
-    try! pngData.write(to: URL(fileURLWithPath: "/Users/psyrax/Code/Prices/icon_1024.png"))
+    try! pngData.write(to: URL(fileURLWithPath: "icon_1024.png"))
     print("✅ Icono base creado: icon_1024.png")
 }
