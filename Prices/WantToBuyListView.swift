@@ -1,40 +1,27 @@
 //
-//  ContentView.swift
+//  WantToBuyListView.swift
 //  Prices
 //
-//  Created by Psyrax on 01/02/26.
+//  Lista de cartas que queremos comprar.
 //
 
 import SwiftData
 import SwiftUI
 
-struct ContentView: View {
+struct WantToBuyListView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var allCartas: [Carta]
     @State private var editingCarta: Carta?
     @State private var detailCarta: Carta?
     @AppStorage("usdToMxnRate") private var usdToMxnRate: Double = 18.5
-    @Binding var deepLinkCardId: String?
 
     private var cartas: [Carta] {
-        allCartas.filter { $0.listType == .forSale }
+        allCartas.filter { $0.listType == .wantToBuy }
     }
 
     var sortedCartas: [Carta] {
         cartas.sorted { carta1, carta2 in
-            switch (carta1.tagId, carta2.tagId) {
-            case (nil, nil):
-                return carta1.name < carta2.name
-            case (nil, _):
-                return false
-            case (_, nil):
-                return true
-            case (let tag1?, let tag2?):
-                if let num1 = Int(tag1), let num2 = Int(tag2) {
-                    return num1 < num2
-                }
-                return tag1 < tag2
-            }
+            carta1.name < carta2.name
         }
     }
 
@@ -43,13 +30,6 @@ struct ContentView: View {
             List {
                 ForEach(sortedCartas) { carta in
                     HStack(spacing: 12) {
-                        if let tagId = carta.tagId, !tagId.isEmpty {
-                            Text(tagId)
-                                .font(.system(size: 32, weight: .bold, design: .rounded))
-                                .foregroundColor(.blue)
-                                .frame(width: 50)
-                        }
-
                         VStack(alignment: .leading) {
                             Text(carta.name)
                                 .font(.headline)
@@ -91,7 +71,6 @@ struct ContentView: View {
             #if os(macOS)
                 .navigationSplitViewColumnWidth(min: 180, ideal: 200)
             #endif
-            .navigationTitle("En Venta")
             .toolbar {
                 #if os(iOS)
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -100,12 +79,13 @@ struct ContentView: View {
                 #endif
                 ToolbarItem {
                     Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                        Label("Agregar carta", systemImage: "plus")
                     }
                 }
             }
+            .navigationTitle("Quiero Comprar")
         } detail: {
-            Text("Select an item")
+            Text("Selecciona una carta")
         }
         .sheet(item: $editingCarta) { carta in
             CartaEditView(carta: carta)
@@ -117,23 +97,6 @@ struct ContentView: View {
             #if os(macOS)
                 .frame(minWidth: 550, minHeight: 650)
             #endif
-        }
-        .onChange(of: deepLinkCardId) { _, newCardId in
-            if let cardId = newCardId {
-                handleDeepLink(cardId: cardId)
-                deepLinkCardId = nil
-            }
-        }
-    }
-
-    private func handleDeepLink(cardId: String) {
-        print("🔍 [ContentView] Buscando carta con tagId: \(cardId)")
-
-        if let foundCarta = allCartas.first(where: { $0.tagId == cardId }) {
-            print("✅ [ContentView] Carta encontrada: \(foundCarta.name)")
-            detailCarta = foundCarta
-        } else {
-            print("❌ [ContentView] No se encontró carta con tagId: \(cardId)")
         }
     }
 
@@ -163,7 +126,8 @@ struct ContentView: View {
                 cardNumber: "1/202",
                 imageURL: nil,
                 price: Decimal(string: "0.0"),
-                currency: "USD"
+                currency: "USD",
+                listType: .wantToBuy
             )
             modelContext.insert(newCarta)
             editingCarta = newCarta
@@ -181,6 +145,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(deepLinkCardId: .constant(nil))
+    WantToBuyListView()
         .modelContainer(for: Carta.self, inMemory: true)
 }

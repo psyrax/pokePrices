@@ -1,0 +1,49 @@
+{
+  "data": [
+    {
+      "id": "sm---cosmic-eclipse-pokemon",
+      "name": "SM - Cosmic Eclipse",
+      "game_id": "pokemon",
+      "game": "Pokemon",
+      "count": 0,
+      "cards_count": 0,
+      "variants_count": 0,
+      "sealed_count": 1,
+      "release_date": null,
+      "set_value_usd": 1500,
+      "set_value_change_7d_pct": 0,
+      "set_value_change_30d_pct": 0,
+      "set_value_change_90d_pct": 0
+    },
+    {
+      "id": "ex-trainer-kit-1-latias-latios-pokemon",
+      "name": "EX Trainer Kit 1: Latias & Latios",
+      "game_id": "pokemon",
+      "game": "Pokemon",
+      "count": 20,
+      "cards_count": 20,
+      "variants_count": 98,
+      "sealed_count": 0,
+      "release_date": "2004-03-01",
+      "set_value_usd": 245.50,
+      "set_value_change_7d_pct": 2.5,
+      "set_value_change_30d_pct": -1.2,
+      "set_value_change_90d_pct": 5.8
+    },
+    {
+      "id": "scarlet-violet-151-pokemon",
+      "name": "Scarlet & Violet - 151",
+      "game_id": "pokemon",
+      "game": "Pokemon",
+      "count": 207,
+      "cards_count": 207,
+      "variants_count": 1035,
+      "sealed_count": 12,
+      "release_date": "2023-09-22",
+      "set_value_usd": 3420.75,
+      "set_value_change_7d_pct": 1.8,
+      "set_value_change_30d_pct": 3.4,
+      "set_value_change_90d_pct": 8.9
+    }
+  ]
+}
