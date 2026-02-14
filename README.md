@@ -37,8 +37,8 @@ Look up any card by name, optionally filter by expansion, and instantly see pric
 ## 📸 Screens
 
 | En Venta | Quiero Comprar | Buscar Precios | Configuración |
-|----------|---------------|----------------|---------------|
-| Your cards for sale with tag IDs and prices | Wishlist of cards to buy | Quick search with instant results | API key, exchange rate, bulk updates |
+|:--------:|:--------------:|:--------------:|:-------------:|
+| ![En Venta](screenshots/sell.png) | ![Quiero Comprar](screenshots/buy.png) | ![Buscar Precios](screenshots/search.png) | ![Configuración](screenshots/config.png) |
 
 ---
 
