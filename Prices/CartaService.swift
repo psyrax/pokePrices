@@ -125,7 +125,7 @@ final class CartaService {
 
             // Return all cards found
             return resp.data.map { dto in
-                print("✅ [CartaService] Mapeando carta: \(dto.name)")
+                print("✅ [CartaService] Mapeando carta: \(dto.name ?? "(sin nombre)")")
                 return map(dto: dto)
             }
         } catch let err as CartaServiceError {
