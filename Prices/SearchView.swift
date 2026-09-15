@@ -95,7 +95,9 @@ struct SearchView: View {
                         .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.borderedProminent)
-                    .disabled(searchText.trimmingCharacters(in: .whitespaces).isEmpty || isSearching || apiKey.isEmpty)
+                    .disabled(
+                        searchText.trimmingCharacters(in: .whitespaces).isEmpty || isSearching
+                            || apiKey.isEmpty)
                 }
                 .padding()
 
@@ -103,7 +105,9 @@ struct SearchView: View {
                     ContentUnavailableView(
                         "API Key requerida",
                         systemImage: "key.fill",
-                        description: Text("Configura tu API key en la pestaña de Configuración para poder buscar.")
+                        description: Text(
+                            "Configura tu API key en la pestaña de Configuración para poder buscar."
+                        )
                     )
                 } else if let error = errorMessage {
                     ContentUnavailableView(
@@ -121,7 +125,8 @@ struct SearchView: View {
                     ContentUnavailableView(
                         "Busca una carta",
                         systemImage: "sparkle.magnifyingglass",
-                        description: Text("Escribe el nombre de una carta para consultar sus precios.")
+                        description: Text(
+                            "Escribe el nombre de una carta para consultar sus precios.")
                     )
                 } else {
                     // Results list
@@ -141,7 +146,9 @@ struct SearchView: View {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
                     Button("Listo") {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                        UIApplication.shared.sendAction(
+                            #selector(UIResponder.resignFirstResponder), to: nil, from: nil,
+                            for: nil)
                     }
                 }
             }
